@@ -1,0 +1,75 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+\usepackage[cmex10]{amsmath}
+\usepackage{amssymb}
+\setlength{\parindent}{0pt}
+\usepackage{array}
+\usepackage{tikz, graphicx}
+\usepackage{shadethm}
+\usepackage{mathtools}
+\usepackage{tcolorbox}
+\usepackage{caption}
+
+
+\title{Assignment 2}
+\author{Danda Sai Pravallika  - CS20BTECH11013}
+
+\begin{document}
+\maketitle
+Download all python codes from
+\begin{tcolorbox}
+https://github.com/spdanda/AI1103/blob/main/A
+ssignment2/Assignment2.py
+\end{tcolorbox}
+and latex - tikz codes from 
+\begin{tcolorbox}
+https://github.com/spdanda/AI1103/blob/main/A
+ssignment2/Assignment2.tex
+\end{tcolorbox}
+\large\textbf{Problem 5.31 :}\\
+Two cards are drawn simultaneously (or successively without replacement) from a well-shuffled  pack  of  52  cards.  Find  the  mean, variance and standard deviation of the number of kings.\\
+\textbf{Solution :}\\
+Let X denote the no.of kings in a draw of 2 cards.
+\begin{align}
+\Longrightarrow\; \Pr(\emph{X}=0) &= \dfrac{48_{C_2}}{52_{C_2}}=\dfrac{188}{221} \\
+\Pr(\emph{X}=1) &= \dfrac{4_{C_1} \times48_{C_1}}{52_{C_2}}=\dfrac{32}{221} \\ 
+\Pr(\emph{X}=2)&=\dfrac{4_{C_2}}{52_{C_2}}= \dfrac{1}{221}\\ \nonumber
+\end{align}
+
+\begin{center}
+\begin{tabular}{ | m{1.5cm} | m{1.75cm}| m{1.75cm} | m{1.75cm} | } 
+\hline \vspace{2pt}
+
+X     & \hspace{0.5cm}0                & \hspace{0.5cm}1               & \hspace{0.5cm}2             \\ \hline \vspace{8pt}
+\(\Pr\)(\emph{X}) & \hspace{0.5cm}\(\frac{\textbf{188}}{\textbf{221}}\) & \hspace{0.5cm}\(\frac{\textbf{32}}{\textbf{221}}\) & \;\;\;\(\frac{\textbf{1}}{\textbf{221}}\)\\ 
+\hline
+\end{tabular}
+\captionof{table}{\large Probability distribution table}\label{tab:B-1}
+\end{center}
+\newpage
+
+\begin{align}
+\nonumber\text{Mean of \emph{X}}&= \emph{E(X)} \\ \nonumber
+               &=\sum_{\emph{k}=0}^{2} \nonumber k\,\Pr(\emph{X=k})\\\nonumber
+               &=1 \times\frac{32}{221}+2 \times\frac{1}{221}\\
+               &= \frac{34}{221} = 0.154\\\nonumber
+\end{align}
+
+\begin{align}
+\nonumber\text{Variance} &=\emph{E}\,(\emph{X}^2) - [\emph{E}\,(\emph{X})]^2\\\nonumber
+                  &= \sum_{\emph{k}=0}^{2} \emph{k}^2 \Pr(\emph{X=k}) - \frac{34^2}{221^2}\\\nonumber
+                  &= 1^2\times\frac{32}{221} + 2^2\times\frac{1}{221} - \frac{34^2}{221^2}\\\vspace{0.1cm}
+                  &= \frac{6800}{48841} = 0.139\\\nonumber
+\end{align}
+
+\begin{align}
+\nonumber\text{Standard Deviation }\sigma &= \sqrt{\emph{Var(X)}}\\ \nonumber
+&= \sqrt{0.139}\\ &= 0.373\\\nonumber
+\end{align}
+
+\newpage
+\begin{figure}[h!]
+    \includegraphics{Figure1.png}
+    \caption{\large Theoretical and Simulated probability results}
+\end{figure}
+
+\end{document}
