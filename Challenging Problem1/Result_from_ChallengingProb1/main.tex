@@ -128,17 +128,28 @@ columns=fullflexible
 \renewcommand{\thetable}{\theenumi}
 Download all latex-tikz codes from 
 %
-\begin{lstlisting}https://github.com/spdanda/AI1103/edit/main/Challenging%20Problem1/Result_from_ChallengingProb1/main.tex
+\begin{lstlisting}
+https://github.com/spdanda/AI1103/blob/main/Challenging%20Problem1/Result_from_ChallengingProb1/main.tex
 \end{lstlisting}
 \large\textbf{Statement :}\\
 A non-negative random variable has zero expectation value if and only if it is zero.\\
 \textbf{Proof :}\\
 Let $Y$ be a non-negative random variable defined on the probability space $\Omega$.\\
-Let $A_m$ be the set of all $\omega \in \Omega$ such that the value of $Y$ is greater than $\frac{1}{m}$ where $m \in N$ i.e.,
+Let $A_m$ be the set of all $\omega \in \Omega$ such that the value of $Y$ is greater than or equal to $\frac{1}{m}$ where $m \in N$ i.e.,
 $$A_m = \cbrak{\omega \in \Omega\,:\,Y(\omega) \geq \frac{1}{m}}$$
 Given
 \begin{align}
-    E(Y) =0 \implies \int_\Omega Yd_P =0
+    E(Y) =0 \implies \int_\Omega Y f(y)d_Y =0
+\end{align}
+where $f(y)$ represents the pdf of the random variable $Y$.
+Let $P$ denote the total probability i.e.,
+\begin{align}
+    P &= \int_\Omega f(y)d_Y\\
+    \implies \frac{d_P}{d_Y} &= f(y)\\
+    \implies   f(y)d_Y &= d_p 
+\end{align}
+\begin{align}
+\therefore E(Y) = \int_\Omega Yd_P = 0
 \end{align}
 As $Y$ is non-negative,
 \begin{align}
