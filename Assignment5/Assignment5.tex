@@ -1,0 +1,289 @@
+\documentclass[journal,12pt,twocolumn]{IEEEtran}
+
+\usepackage{setspace}
+\usepackage{gensymb}
+\singlespacing
+\usepackage[cmex10]{amsmath}
+\usepackage{amsmath}
+
+\usepackage{amsthm}
+
+\usepackage{mathrsfs}
+\usepackage{txfonts}
+\usepackage{stfloats}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{cases}
+\usepackage{subfig}
+
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{caption}
+
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{steinmetz}
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usepackage{verbatim}
+\usepackage{tfrupee}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-euclide}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{multicol}
+
+
+
+\usetikzlibrary{calc,math}
+\usepackage{listings}
+    \usepackage{color}                                            %%
+    \usepackage{array}                                            %%
+    \usepackage{longtable}                                        %%
+    \usepackage{calc}                                             %%
+    \usepackage{multirow}                                         %%
+    \usepackage{hhline}                                           %%
+    \usepackage{ifthen}                                           %%
+    \usepackage{lscape}     
+\usepackage{multicol}
+\usepackage{chngcntr}
+
+\DeclareMathOperator*{\Res}{Res}
+\newcommand*{\permcomb}[4][0mu]{{{}^{#3}\mkern#1#2_{#4}}}
+\newcommand*{\perm}[1][-3mu]{\permcomb[#1]{P}}
+\newcommand*{\comb}[1][-1mu]{\permcomb[#1]{C}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+
+\renewcommand\thesectiondis{\arabic{section}}
+\renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
+\renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+\def\inputGnumericTable{}                                 %%
+
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\begin{document}
+
+\newcommand{\BEQA}{\begin{eqnarray}}
+\newcommand{\EEQA}{\end{eqnarray}}
+\newcommand{\define}{\stackrel{\triangle}{=}}
+\bibliographystyle{IEEEtran}
+\raggedbottom
+\setlength{\parindent}{0pt}
+\providecommand{\mbf}{\mathbf}
+\providecommand{\pr}[1]{\ensuremath{\Pr\left(#1\right)}}
+\providecommand{\qfunc}[1]{\ensuremath{Q\left(#1\right)}}
+\providecommand{\sbrak}[1]{\ensuremath{{}\left[#1\right]}}
+\providecommand{\lsbrak}[1]{\ensuremath{{}\left[#1\right.}}
+\providecommand{\rsbrak}[1]{\ensuremath{{}\left.#1\right]}}
+\providecommand{\brak}[1]{\ensuremath{\left(#1\right)}}
+\providecommand{\lbrak}[1]{\ensuremath{\left(#1\right.}}
+\providecommand{\rbrak}[1]{\ensuremath{\left.#1\right)}}
+\providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
+\providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
+\providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
+\theoremstyle{remark}
+\newtheorem{rem}{Remark}
+\newcommand{\sgn}{\mathop{\mathrm{sgn}}}
+\providecommand{\abs}[1]{\vert#1\vert}
+\providecommand{\res}[1]{\Res\displaylimits_{#1}} 
+\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+\providecommand{\mtx}[1]{\mathbf{#1}}
+\providecommand{\mean}[1]{E[ #1 ]}
+\providecommand{\fourier}{\overset{\mathcal{F}}{ \rightleftharpoons}}
+%\providecommand{\hilbert}{\overset{\mathcal{H}}{ \rightleftharpoons}}
+\providecommand{\system}{\overset{\mathcal{H}}{ \longleftrightarrow}}
+	%\newcommand{\solution}[2]{\textbf{Solution:}{#1}}
+\newcommand{\solution}{\noindent \textbf{Solution: }}
+\newcommand{\cosec}{\,\text{cosec}\,}
+\providecommand{\dec}[2]{\ensuremath{\overset{#1}{\underset{#2}{\gtrless}}}}
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
+\newcommand{\mydet}[1]{\ensuremath{\begin{vmatrix}#1\end{vmatrix}}}
+\numberwithin{equation}{subsection}
+\makeatletter
+\@addtoreset{figure}{problem}
+\makeatother
+\let\StandardTheFigure\thefigure
+\let\vec\mathbf
+\renewcommand{\thefigure}{\theproblem}
+\def\putbox#1#2#3{\makebox[0in][l]{\makebox[#1][l]{}\raisebox{\baselineskip}[0in][0in]{\raisebox{#2}[0in][0in]{#3}}}}
+     \def\rightbox#1{\makebox[0in][r]{#1}}
+     \def\centbox#1{\makebox[0in]{#1}}
+     \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
+     \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
+\vspace{3cm}
+\title{Assignment-5}
+\author{Name: Sai Pravallika Danda, Roll Number: CS20BTECH11013}
+\maketitle
+\newpage
+\bigskip
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
+Download all latex-tikz codes from
+\begin{lstlisting}
+   https://github.com/spdanda/AI1103/blob/main/Assignment4/Assignment4.tex
+\end{lstlisting}
+\large\textbf{CSIR-UGC-NET June-2016 Q50\,:}\\
+ Let X and Y be independent and identically distributed random variables such that \(\pr{X=0}=\pr{X=1}= \frac{1}{2}\). Let \(Z = X+Y \text{ and } W = \abs{X-Y}\). Then which statement is not correct?
+ \begin{enumerate}
+     \item $X \text{ and } W$ are independent.
+     \item $Y \text{ and } W$ are independent.
+     \item $Z \text{ and } W$ are uncorrelated.
+     \item $Z \text{ and } W$ are independent.
+ \end{enumerate}
+ \textbf{Solution:}\\
+ $X, Y \in \cbrak{0,1}\implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.\\
+ Also,
+ \begin{equation}
+         \pr{X=x} = 
+     \begin{cases}
+      \frac{1}{2} & x \in \cbrak{0,1}\\
+      0 & \text{otherwise}
+     \end{cases}
+ \end{equation}
+  \begin{equation}
+         \pr{Y=y} = 
+     \begin{cases}
+      \frac{1}{2} & y \in \cbrak{0,1}\\
+      0 & \text{otherwise}
+     \end{cases}
+ \end{equation}
+ \begin{enumerate}[label=\alph*)]
+\item
+\begin{multline}
+        \pr{W=0} = \pr{X=0,Y=0}+\\\pr{X=1,Y=1}
+\end{multline}
+\begin{align}
+        &= \frac{1}{2}\times\frac{1}{2} + \frac{1}{2}\times\frac{1}{2}\\
+        &= \frac{1}{2}
+ \end{align}
+ \begin{align}
+     \pr{W=1} &= 1- \pr{W=0}\\
+              &= \frac{1}{2}
+ \end{align}
+ \begin{equation}
+  \therefore \pr{W=w} =
+    \begin{cases}
+      \frac{1}{2} & w \in \cbrak{0,1}\\
+      0 & \text{otherwise}
+    \end{cases}       
+\end{equation}
+\begin{align}
+   \text{Also }E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
+                    &= \frac{1}{2} 
+\end{align}
+ \item
+ \begin{align}
+ \pr{Z=z} &=\pr{X+Y =z}\\
+          &=\sum_{x=0}^z \pr{X=x}\times\pr{Y=z-x}\\
+          &=\left(2-\abs{z-1}\,\right)\times\frac{1}{2}\times\frac{1}{2}\\
+          &= \frac{2-\abs{z-1}}{4}
+ \end{align}
+  \begin{equation}
+  \therefore \pr{Z=z} =
+    \begin{cases}
+       \frac{2-\abs{\,z-1}}{4} & z \in \cbrak{0,1,2}\\
+      0 & \text{otherwise}
+    \end{cases}       
+\end{equation}
+\begin{align}
+    \text{And } E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
+                     &= 1
+\end{align}
+\end{enumerate}
+Now, for checking each option,
+\begin{enumerate}
+    \item Checking if $X$ and $W$ are independent
+\begin{align}
+    p_1 &= \pr{X=x,W=w}\\
+        &= \pr{X=x,Y=x\pm w}\\
+        &=\pr{X=x}\times\pr{Y=x\pm w}\\
+        &= \frac{1}{2}\times\frac{1}{2}\\
+        &= \begin{cases}
+        \frac{1}{4} & (x\pm w) \in \{1, 2, 3, 4, 5, 6\}\\ ~\\[-1em]
+        0 & \text{otherwise}
+    \end{cases}
+\end{align}
+(only one value for $Y$ is obtained for each case when $x$ and $w$ are substituted)\\
+\begin{align}
+    \pr{X=x}\times\pr{W=w} &= \frac{1}{2} \times\frac{1}{2} \\
+                           &= \frac{1}{4}
+\end{align}
+$$\Pr{(X=x)}\Pr{(W=w)} = \Pr{(X=x,W=w)}$$
+$\implies$ $X$ and $W$ are independent and hence Option 1 is true.
+\item Checking if $Y$ and $W$ are independent\\
+Solving of this case is identical to the first option except the variable $X$ is replaced by $Y$.
+Hence on solving, you get $Y$  and $W$ are independent.\\
+$\therefore$ Option 2 is also true.
+\item Checking if $W$ and $Z$ are uncorrelated\\
+\textbf{Uncorrelated random variables:} Two variables are said to be uncorrelated if the expected value of their joint distribution is equal to product of the expected values of their respective marginal distributions.\\
+Also, $WZ \in\cbrak{0,1,2}$
+\begin{align}
+    \pr{WZ =2} = \pr{W=1,Z=2} =0
+\end{align}
+($\because$ If $Z=2$, $X = Y =1 \implies W =0$ i.e., $\neq$ to 1)
+\begin{align}
+    \pr{WZ =0} = \frac{1}{2}\,(\because\text{either}\; W=0\;\text{or}\,Z =0)
+\end{align}
+\begin{multline}
+    \pr{WZ=1} = 1 - \pr{WZ =0} - \\\pr{WZ =2}
+\end{multline}
+\begin{align}
+    &= 1 -\frac{1}{2}\\
+    &= \frac{1}{2}
+\end{align}
+$\therefore$ Expected value of $WZ$, $E[WZ]$
+\begin{align}
+    &= \sum_{k=0,1,2} k\pr{WZ =k}\\
+    &= 1 \times \frac{1}{2} +0\\
+    &= \frac{1}{2}
+\end{align}
+\begin{align}
+    \text{Also } E[W]\times E[Z] &= \frac{1}{2}\times1 = \frac{1}{2}\\
+                                 &= E[WZ]
+\end{align}
+Hence from the above equation $W$ and $Z$ are uncorrelated random variables.\\
+$\therefore$Option 3 is also true.
+\item Let's check for one particular case.
+\begin{align}
+    \pr{W=0\,|\,Z=0} = 1
+\end{align}
+($\because\;Z=0 \implies X = Y =0 \implies W=0$)
+\begin{align}
+    \therefore \frac{\pr{W=0,\,Z=0}}{\pr{Z=0}} &= 1
+\end{align}
+\begin{multline}
+   \implies\pr{W=0,Z=0} =\pr{Z=0} \\
+                       \neq\pr{W=0}\times\pr{Z=0}   
+\end{multline}
+$\therefore$ $W$ and $Z$ are not independent random variables\\
+Hence Option 4 is incorrect.\\
+$\therefore$ Answer is Option4.
+
+
+
+    
+\end{enumerate}
+  
+ 
+
+
+
+
+
+
+
+ 
+ 
+
+\end{document}
