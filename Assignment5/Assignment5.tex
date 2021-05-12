@@ -183,13 +183,16 @@ Download all latex-tikz codes from
                     &= \frac{1}{2} 
 \end{align}
  \item
- \begin{align}
- \pr{Z=z} &=\pr{X+Y =z}\\
-          &=\sum_{x=0}^z \pr{X=x}\times\pr{Y=z-x}\\
+ \begin{multline}
+     \pr{Z=z} =\pr{X+Y =z}\\
+              =\sum_{x=0}^z\pr{X=x}\pr{Y=z-x}
+ \end{multline}
+ 
+\begin{align}
           &=\left(2-\abs{z-1}\,\right)\times\frac{1}{2}\times\frac{1}{2}\\
           &= \frac{2-\abs{z-1}}{4}
- \end{align}
-  \begin{equation}
+\end{align}
+\begin{equation}
   \therefore \pr{Z=z} =
     \begin{cases}
        \frac{2-\abs{\,z-1}}{4} & z \in \cbrak{0,1,2}\\
@@ -214,12 +217,15 @@ Now, for checking each option,
         0 & \text{otherwise}
     \end{cases}
 \end{align}
-(only one value for $Y$ is obtained for each case when $x$ and $w$ are substituted)\\
+(only one value for $Y$ is obtained for each case when $x$ and $w$ are substituted)
 \begin{align}
     \pr{X=x}\times\pr{W=w} &= \frac{1}{2} \times\frac{1}{2} \\
                            &= \frac{1}{4}
 \end{align}
-$$\Pr{(X=x)}\Pr{(W=w)} = \Pr{(X=x,W=w)}$$
+\begin{multline}
+    \Pr{(X=x)}\Pr{(W=w)} =\\ \Pr{(X=x,W=w)}
+\end{multline}
+
 $\implies$ $X$ and $W$ are independent and hence Option 1 is true.
 \item Checking if $Y$ and $W$ are independent\\
 Solving of this case is identical to the first option except the variable $X$ is replaced by $Y$.
@@ -233,8 +239,9 @@ Also, $WZ \in\cbrak{0,1,2}$
 \end{align}
 ($\because$ If $Z=2$, $X = Y =1 \implies W =0$ i.e., $\neq$ to 1)
 \begin{align}
-    \pr{WZ =0} = \frac{1}{2}\,(\because\text{either}\; W=0\;\text{or}\,Z =0)
+    \pr{WZ =0} = \frac{1}{2}
 \end{align}
+($\because\text{either }W=0\;\text{or}\;Z =0)$
 \begin{multline}
     \pr{WZ=1} = 1 - \pr{WZ =0} - \\\pr{WZ =2}
 \end{multline}
@@ -269,21 +276,10 @@ $\therefore$Option 3 is also true.
 $\therefore$ $W$ and $Z$ are not independent random variables\\
 Hence Option 4 is incorrect.\\
 $\therefore$ Answer is Option4.
-
-
-
     
 \end{enumerate}
   
  
-
-
-
-
-
-
-
  
  
-
 \end{document}
