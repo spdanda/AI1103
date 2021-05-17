@@ -182,25 +182,44 @@ Download all latex-tikz codes from
    \text{Also }E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
                     &= \frac{1}{2} 
 \end{align}
- \item
- \begin{multline}
-     \pr{Z=z} =\pr{X+Y =z}\\
-              =\sum_{x=0}^z\pr{X=x}\pr{Y=z-x}
- \end{multline}
- 
+ \item Characteristic function of random variable is defined as
 \begin{align}
-          &=\left(2-\abs{z-1}\,\right)\times\frac{1}{2}\times\frac{1}{2}\\
-          &= \frac{2-\abs{z-1}}{4}
+\phi_X(\omega)=E[e^{iwX}] \label{simul1}
 \end{align}
-\begin{equation}
-  \therefore \pr{Z=z} =
-    \begin{cases}
-       \frac{2-\abs{\,z-1}}{4} & z \in \cbrak{0,1,2}\\
-      0 & \text{otherwise}
-    \end{cases}       
-\end{equation}
+For discrete random variable X
 \begin{align}
-    \text{And } E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
+   \phi_X(\omega) =\sum_{k}e^{iwk}P_X(k)\\
+\phi_X(\omega)=\frac{1 + e^{iw}}{2}
+\end{align}
+Similarly, For discrete random variable Y
+\begin{align}
+\phi_Y(\omega) = \sum_{k}e^{iwk}P_Y(k)\\
+\phi_Y(\omega)= \frac{1 + e^{iw}}{2}
+\end{align}
+if X and Y are independent random variables, then
+\begin{align}
+\phi_{X+Y}(\omega)&=E[e^{iw(X+Y)}] \\
+               &=E[e^{iwX}.e^{iwY}] \\
+               &=\phi_X(\omega)\times \phi_Y(\omega)
+\end{align}
+\begin{align}
+  \phi_{Z}(\omega) &=\left(\frac{1 + e^{iw}}{2}\right)^2\\
+                   &= \frac{1+e^{2iw}+2e^{iw}}{4}\\
+                   &= \frac{1}{4}\,e^{0iw} + \frac{1}{2}e^{iw} + \frac{1}{4}e^{2iw}
+\end{align}
+From the definition of characteristic function of a discrete random variable as in \eqref{simul1}, we get\\
+    PMF of Z is 
+\begin{align}
+    p_{Z}(z) = \pr{Z = z} = 
+\begin{cases}
+\frac{1}{4} & z=0
+\\
+\frac{1}{2} & z=1\\
+\frac{1}{4} & z=2
+\end{cases}\label{2}
+\end{align}
+\begin{align}
+    \text{Also, } E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
                      &= 1
 \end{align}
 \end{enumerate}
