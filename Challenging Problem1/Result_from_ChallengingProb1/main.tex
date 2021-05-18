@@ -134,7 +134,7 @@ https://github.com/spdanda/AI1103/blob/main/Challenging%20Problem1/Result_from_C
 \large\textbf{Statement :}\\
 A non-negative random variable has zero expectation value if and only if it is zero.\\
 \textbf{Proof :}\\
-Let $Y$ be a non-negative random variable defined on the probability space $\Omega$.\\
+Let $Y(\omega)$ be a non-negative random variable defined on the probability space $\Omega$ i.e, $\omega\in\Omega$\\
 Let $A_m$ be the set of all $\omega \in \Omega$ such that the value of $Y$ is greater than or equal to $\frac{1}{m}$ where $m \in N$ i.e.,
 $$A_m = \cbrak{\omega \in \Omega\,:\,Y(\omega) \geq \frac{1}{m}}$$
 Given
@@ -151,10 +151,11 @@ Let $P$ denote the total probability i.e.,
 \begin{align}
 \therefore E(Y) = \int_\Omega Yd_P = 0
 \end{align}
-As $Y$ is non-negative,
+As $A_m$ is subset of $\Omega$ and $Y$ is non-negative,
 \begin{align}
     \int_\Omega Yd_P \geq \int_{A_m}Yd_p \label{simul1}
 \end{align}
+(This can also be proved by considering areas, $\because A_m \subseteq \Omega\;\&\;Y\geq 0$; Area under the graph of $Y$ vs $P$ wrt $x$-axis in range $\Omega$ is greater than that of in range $A_m$)\\
 Also in the set $A_m$, $Y \geq \frac{1}{m}$
 \begin{align}
   \therefore \int_{A_m}Yd_p  &\geq  \int_{A_m}\frac{1}{m}d_p\\
