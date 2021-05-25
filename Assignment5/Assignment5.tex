@@ -158,9 +158,18 @@ Download all latex-tikz codes from
       0 & \text{otherwise}
      \end{cases}
  \end{equation}
+So Probability Generating functions(PGF's) for $X$ and $Y$ are
+\begin{align}
+    \mathcal{G}_{X}(z) &= E[z^x]\\
+                       &= \sum_{i=0}^{1}p_i\,z^i\\
+                       &=\frac{1+z}{2}
+\end{align}
+Similarly,
+\begin{align}
+    \mathcal{G}_{Y}(z) = \frac{1+z}{2}
+\end{align}
  \begin{enumerate}[label=\alph*)]
-\item
-\begin{multline}
+\item \begin{multline}
         \pr{W=0} = \pr{X=0,Y=0}+\\\pr{X=1,Y=1}
 \end{multline}
 \begin{align}
@@ -182,35 +191,21 @@ Download all latex-tikz codes from
    \text{Also }E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
                     &= \frac{1}{2} 
 \end{align}
- \item Characteristic function of random variable is defined as
+\item PGF of $Z$:
 \begin{align}
-\phi_X(\omega)=E[e^{iwX}] \label{simul1}
+  \mathcal{G}_Z(z) &= E[z^{X+Y}]\\
+                   &= E[z^X \times z^Y]\\
+                   &= E[z^X]\times E[z^Y] 
 \end{align}
-For discrete random variable X
+($\because X \text{ and } Y$ are independent)
 \begin{align}
-   \phi_X(\omega) =\sum_{k}e^{iwk}P_X(k)\\
-\phi_X(\omega)=\frac{1 + e^{iw}}{2}
+ \therefore \mathcal{G}_Z(z) &=\left(\frac{1 + z}{2}\right)^2\\
+                   &= \frac{1+2z+z^2}{4}\\
+                   &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
-Similarly, For discrete random variable Y
+$\therefore$From the PGF of $Z$; \;pmf of $Z$ is
 \begin{align}
-\phi_Y(\omega) = \sum_{k}e^{iwk}P_Y(k)\\
-\phi_Y(\omega)= \frac{1 + e^{iw}}{2}
-\end{align}
-if X and Y are independent random variables, then
-\begin{align}
-\phi_{X+Y}(\omega)&=E[e^{iw(X+Y)}] \\
-               &=E[e^{iwX}.e^{iwY}] \\
-               &=\phi_X(\omega)\times \phi_Y(\omega)
-\end{align}
-\begin{align}
-  \phi_{Z}(\omega) &=\left(\frac{1 + e^{iw}}{2}\right)^2\\
-                   &= \frac{1+e^{2iw}+2e^{iw}}{4}\\
-                   &= \frac{1}{4}\,e^{0iw} + \frac{1}{2}e^{iw} + \frac{1}{4}e^{2iw}
-\end{align}
-From the definition of characteristic function of a discrete random variable as in \eqref{simul1}, we get\\
-    PMF of Z is 
-\begin{align}
-    p_{Z}(z) = \pr{Z = z} = 
+    \pr{Z = z} = 
 \begin{cases}
 \frac{1}{4} & z=0
 \\
