@@ -71,6 +71,7 @@ frame=single,
 breaklines=true,
 columns=fullflexible
 }
+\newenvironment{Proof}[2] {\textbf{Solution : }}{\hfill$\cdot$}
 \begin{document}
 
 \newcommand{\BEQA}{\begin{eqnarray}}
@@ -93,6 +94,12 @@ columns=fullflexible
 \providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
 \theoremstyle{remark}
 \newtheorem{rem}{Remark}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\vert#1\vert}
 \providecommand{\res}[1]{\Res\displaylimits_{#1}} 
@@ -141,9 +148,11 @@ Download all latex-tikz codes from
      \item $Z \text{ and } W$ are uncorrelated.
      \item $Z \text{ and } W$ are independent.
  \end{enumerate}
- \textbf{Solution:}\\
- $X, Y \in \cbrak{0,1}\implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.\\
- Also,
+\begin{Proof}{}{}
+ $X, Y \in \cbrak{0,1}
+ \\\implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.
+ \begin{lemma}
+ PMF's of $X$ and $Y$
  \begin{equation}
          \pr{X=x} = 
      \begin{cases}
@@ -158,7 +167,10 @@ Download all latex-tikz codes from
       0 & \text{otherwise}
      \end{cases}
  \end{equation}
-So Probability Generating functions(PGF's) for $X$ and $Y$ are
+ \end{lemma}
+ 
+\begin{lemma}
+Probability Generating functions(PGF's) for $X$ and $Y$ are
 \begin{align}
     \mathcal{G}_{X}(z) &= E[z^x]\\
                        &= \sum_{i=0}^{1}p_i\,z^i\\
@@ -168,8 +180,9 @@ Similarly,
 \begin{align}
     \mathcal{G}_{Y}(z) = \frac{1+z}{2}
 \end{align}
- \begin{enumerate}[label=\alph*)]
-\item Now calculate the Generating function of $W$
+\end{lemma}
+\begin{lemma}
+Generating function of $W$;
 \begin{align}
     \mathcal{G}_W(z) &= E\left[z^{\abs{X-Y\,}}\right]
 \end{align}
@@ -183,7 +196,9 @@ Similarly,
 \begin{align}
   &= 1+\frac{z}{2}
 \end{align}
-$\therefore$ From the generating function obtained, pmf of $W$ is
+\end{lemma} 
+\begin{lemma}
+From the generating function obtained, pmf of $W$ is
 \begin{equation}
    \pr{W=w} =
     \begin{cases}
@@ -191,11 +206,16 @@ $\therefore$ From the generating function obtained, pmf of $W$ is
       0 & \text{otherwise}
     \end{cases}       
 \end{equation}
+\end{lemma}
+\begin{lemma}
+Expected value of $W$
 \begin{align}
-   \text{Also }E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
+   E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
                     &= \frac{1}{2} 
 \end{align}
-\item PGF of $Z$:
+\end{lemma}
+\begin{lemma}
+PGF of $Z$:
 \begin{align}
   \mathcal{G}_Z(z) &= E[z^{X+Y}]\\
                    &= E[z^X \times z^Y]\\
@@ -207,7 +227,9 @@ $\therefore$ From the generating function obtained, pmf of $W$ is
                    &= \frac{1+2z+z^2}{4}\\
                    &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
-$\therefore$From the PGF of $Z$; \;pmf of $Z$ is
+\end{lemma}
+\begin{lemma}
+From the PGF of $Z$; \;pmf of $Z$ is
 \begin{align}
     \pr{Z = z} = 
 \begin{cases}
@@ -217,11 +239,16 @@ $\therefore$From the PGF of $Z$; \;pmf of $Z$ is
 \frac{1}{4} & z=2
 \end{cases}\label{2}
 \end{align}
+\end{lemma}
+\begin{lemma}
+Expected value of $Z$
 \begin{align}
-    \text{Also, } E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
+   E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
                      &= 1
 \end{align}
-\end{enumerate}
+\end{lemma}
+
+
 Now, for checking each option,
 \begin{enumerate}
     \item Checking if $X$ and $W$ are independent
@@ -299,5 +326,5 @@ $\therefore$ Answer is Option4.
   
  
  
- 
+\end{Proof} 
 \end{document}
