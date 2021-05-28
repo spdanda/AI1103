@@ -148,11 +148,11 @@ Download all latex-tikz codes from
      \item $Z \text{ and } W$ are uncorrelated.
      \item $Z \text{ and } W$ are independent.
  \end{enumerate}
-\begin{Proof}{}{}
- $X, Y \in \cbrak{0,1}
- \\\implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.
- \begin{lemma}
- PMF's of $X$ and $Y$
+\textbf{Solution :}\\
+$X, Y \in \cbrak{0,1}
+\implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.
+\begin{enumerate}
+ \item PMF's of $X$ and $Y$:
  \begin{equation}
          \pr{X=x} = 
      \begin{cases}
@@ -167,9 +167,7 @@ Download all latex-tikz codes from
       0 & \text{otherwise}
      \end{cases}
  \end{equation}
- \end{lemma}
- 
-\begin{lemma}
+
 Probability Generating functions(PGF's) for $X$ and $Y$ are
 \begin{align}
     \mathcal{G}_{X}(z) &= E[z^x]\\
@@ -180,9 +178,8 @@ Similarly,
 \begin{align}
     \mathcal{G}_{Y}(z) = \frac{1+z}{2}
 \end{align}
-\end{lemma}
-\begin{lemma}
-Generating function of $W$;
+
+  \item Generating function of $W$;
 \begin{align}
     \mathcal{G}_W(z) &= E\left[z^{\abs{X-Y\,}}\right]
 \end{align}
@@ -196,8 +193,7 @@ Generating function of $W$;
 \begin{align}
   &= 1+\frac{z}{2}
 \end{align}
-\end{lemma} 
-\begin{lemma}
+
 From the generating function obtained, pmf of $W$ is
 \begin{equation}
    \pr{W=w} =
@@ -206,16 +202,14 @@ From the generating function obtained, pmf of $W$ is
       0 & \text{otherwise}
     \end{cases}       
 \end{equation}
-\end{lemma}
-\begin{lemma}
+
 Expected value of $W$
 \begin{align}
    E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
                     &= \frac{1}{2} 
 \end{align}
-\end{lemma}
-\begin{lemma}
-PGF of $Z$:
+
+  \item PGF of $Z$:
 \begin{align}
   \mathcal{G}_Z(z) &= E[z^{X+Y}]\\
                    &= E[z^X \times z^Y]\\
@@ -227,8 +221,7 @@ PGF of $Z$:
                    &= \frac{1+2z+z^2}{4}\\
                    &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
-\end{lemma}
-\begin{lemma}
+
 From the PGF of $Z$; \;pmf of $Z$ is
 \begin{align}
     \pr{Z = z} = 
@@ -239,16 +232,13 @@ From the PGF of $Z$; \;pmf of $Z$ is
 \frac{1}{4} & z=2
 \end{cases}\label{2}
 \end{align}
-\end{lemma}
-\begin{lemma}
-Expected value of $Z$
+
+Expected value of $Z$:
 \begin{align}
    E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
                      &= 1
 \end{align}
-\end{lemma}
-
-
+\end{enumerate}
 Now, for checking each option,
 \begin{enumerate}
     \item Checking if $X$ and $W$ are independent
@@ -323,8 +313,5 @@ Hence Option 4 is incorrect.\\
 $\therefore$ Answer is Option4.
     
 \end{enumerate}
-  
  
- 
-\end{Proof} 
 \end{document}
