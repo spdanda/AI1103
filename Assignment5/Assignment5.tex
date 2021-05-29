@@ -92,13 +92,11 @@ columns=fullflexible
 \providecommand{\cbrak}[1]{\ensuremath{\left\{#1\right\}}}
 \providecommand{\lcbrak}[1]{\ensuremath{\left\{#1\right.}}
 \providecommand{\rcbrak}[1]{\ensuremath{\left.#1\right\}}}
-\theoremstyle{remark}
-\newtheorem{rem}{Remark}
 \newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
+
+
+
 
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\vert#1\vert}
@@ -179,21 +177,24 @@ Similarly,
     \mathcal{G}_{Y}(z) = \frac{1+z}{2}
 \end{align}
 
-  \item Generating function of $W$;
-\begin{align}
+\item \begin{lemma}
+Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2}$ and $\mathcal{G}_{Y}(z) = \dfrac{1+z}{2}$ is $$\mathcal{G}_W(z) = \frac{1+z}{2}$$
+\end{lemma}
+\begin{proof}
+ \begin{align}
     \mathcal{G}_W(z) &= E\left[z^{\abs{X-Y\,}}\right]
 \end{align}
 \begin{multline}
   \mathcal{G}_W(z) = E\left[z^{X-Y}\,|(X>Y)\right] +\\ E\left[z^{Y-X}\,|(Y>X)\right] + E\left[z^0\,|(X=Y)\right]
 \end{multline}
 \begin{align}
-    &= \frac{1}{4}z^1 + \frac{1}{4}z^1+1
+    &= \frac{1}{4}z^1 + \frac{1}{4}z^1+\left(\frac{1}{4}z^0 + \frac{1}{4}z^0\right)
 \end{align}
 ($\because$ Only possibility for $(X,Y)$ such that $X>Y$ is (1,0), similarly for $Y>X$)
 \begin{align}
-  &= 1+\frac{z}{2}
+  &= \frac{1+z}{2}
 \end{align}
-
+\end{proof}
 From the generating function obtained, pmf of $W$ is
 \begin{equation}
    \pr{W=w} =
@@ -209,15 +210,23 @@ Expected value of $W$
                     &= \frac{1}{2} 
 \end{align}
 
-  \item PGF of $Z$:
-\begin{align}
+\item\begin{lemma}
+Generating Function for $Z=X+Y$ is ($X \text{ and } Y$ being independent) $$\mathcal{G}_Z(z)=\mathcal{G}_X(z) \times \mathcal{G}_Y(z)$$ 
+\end{lemma}
+\begin{proof}
+ \begin{align}
   \mathcal{G}_Z(z) &= E[z^{X+Y}]\\
-                   &= E[z^X \times z^Y]\\
-                   &= E[z^X]\times E[z^Y] 
+                   &= E[z^X z^Y]\\
+                   &= E[z^X]\times E[z^Y]
 \end{align}
 ($\because X \text{ and } Y$ are independent)
 \begin{align}
- \therefore \mathcal{G}_Z(z) &=\left(\frac{1 + z}{2}\right)^2\\
+    &= \mathcal{G}_X(z) \times \mathcal{G}_Y(z)
+\end{align}
+\end{proof}
+ $\therefore$ From \textbf{Lemma 0.2};
+\begin{align}
+\mathcal{G}_Z(z) &=\left(\frac{1 + z}{2}\right)^2\\
                    &= \frac{1+2z+z^2}{4}\\
                    &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
