@@ -95,8 +95,8 @@ columns=fullflexible
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 
-
-
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 
 \newcommand{\sgn}{\mathop{\mathrm{sgn}}}
 \providecommand{\abs}[1]{\vert#1\vert}
@@ -149,8 +149,9 @@ Download all latex-tikz codes from
 \textbf{Solution :}\\
 $X, Y \in \cbrak{0,1}
 \implies Z \in \cbrak{0,1,2} \text{ and } W \in \cbrak{0,1}$.
-\begin{enumerate}
- \item PMF's of $X$ and $Y$:
+
+\begin{definition}
+PMF's for the given random variables $X$ and $Y$ are
  \begin{equation}
          \pr{X=x} = 
      \begin{cases}
@@ -165,8 +166,10 @@ $X, Y \in \cbrak{0,1}
       0 & \text{otherwise}
      \end{cases}
  \end{equation}
+\end{definition}
 
-Probability Generating functions(PGF's) for $X$ and $Y$ are
+\begin{definition}
+Probability Generating functions(PGF's) for the random variables $X$ and $Y$ are
 \begin{align}
     \mathcal{G}_{X}(z) &= E[z^x]\\
                        &= \sum_{i=0}^{1}p_i\,z^i\\
@@ -176,6 +179,7 @@ Similarly,
 \begin{align}
     \mathcal{G}_{Y}(z) = \frac{1+z}{2}
 \end{align}
+\end{definition}
 
 \begin{lemma}
 Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2}$ and $\mathcal{G}_{Y}(z) = \dfrac{1+z}{2}$ is $$\mathcal{G}_W(z) = \frac{1+z}{2}$$
@@ -190,12 +194,13 @@ Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2
 \begin{align}
     &= \frac{1}{4}z^1 + \frac{1}{4}z^1+\left(\frac{1}{4}z^0 + \frac{1}{4}z^0\right)
 \end{align}
-($\because$ Only possibility for $(X,Y)$ such that $X>Y$ is (1,0), similarly for $Y>X$)
+($\because$ Only possibility for $(X,Y)$ such that $X>Y$ is (1,0); Similarly for $Y>X$ and for $X=Y$, two possibilities, (0,0),(1,1))
 \begin{align}
   &= \frac{1+z}{2}
 \end{align}
 \end{proof}
-\item From the generating function obtained, pmf of $W$ is
+\begin{definition}
+The pmf of $W$ with $\mathcal{G}_W(z) = \dfrac{1+z}{2}$ is
 \begin{equation}
    \pr{W=w} =
     \begin{cases}
@@ -203,6 +208,8 @@ Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2
       0 & \text{otherwise}
     \end{cases}       
 \end{equation}
+\end{definition}
+
 
 Expected value of $W$
 \begin{align}
@@ -230,8 +237,8 @@ Generating Function for $Z=X+Y$ is ($X \text{ and } Y$ being independent) $$\mat
                    &= \frac{1+2z+z^2}{4}\\
                    &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
-
-\item From the PGF of $Z$; \;pmf of $Z$ is
+\begin{definition}
+The pmf of $Z$ with $\mathcal{G}_Z(z)= \dfrac{1}{4} + \dfrac{1}{2}z + \dfrac{1}{4}z^2$ is
 \begin{align}
     \pr{Z = z} = 
 \begin{cases}
@@ -241,14 +248,15 @@ Generating Function for $Z=X+Y$ is ($X \text{ and } Y$ being independent) $$\mat
 \frac{1}{4} & z=2
 \end{cases}\label{2}
 \end{align}
+\end{definition}
 
 Expected value of $Z$:
 \begin{align}
    E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
                      &= 1
 \end{align}
-\end{enumerate}
-Now, for checking each option,
+
+Now, checking for each option,
 \begin{enumerate}
     \item Checking if $X$ and $W$ are independent
 \begin{align}
