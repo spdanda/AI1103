@@ -60,6 +60,8 @@
 \renewcommand\thesectiondis{\arabic{section}}
 \renewcommand\thesubsectiondis{\thesectiondis.\arabic{subsection}}
 \renewcommand\thesubsubsectiondis{\thesubsectiondis.\arabic{subsubsection}}
+\renewcommand{\thefigure}{\theenumi}
+\renewcommand{\thetable}{\theenumi}
 
 
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -182,40 +184,68 @@ Similarly,
 \end{definition}
 
 \begin{lemma}
-Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2}$ and $\mathcal{G}_{Y}(z) = \dfrac{1+z}{2}$ is $$\mathcal{G}_W(z) = \frac{1+z}{2}$$
+Generating function for $W = \abs{X-Y}$ where $\mathcal{G}_{X}(z) =\dfrac{1+z}{2}$ and $\mathcal{G}_{Y}(z) = \dfrac{1+z}{2}$ is ($X \text{ and } Y$ being independent) $$\mathcal{G}_W(z) = \frac{1+z}{2}$$
 \end{lemma}
 \begin{proof}
  \begin{align}
     \mathcal{G}_W(z) &= E\left[z^{\abs{X-Y\,}}\right]
 \end{align}
 \begin{multline}
-  \mathcal{G}_W(z) = E\left[z^{X-Y}\,|(X>Y)\right] +\\ E\left[z^{Y-X}\,|(Y>X)\right] + E\left[z^0\,|(X=Y)\right]
+\implies  \mathcal{G}_W(z) = E\left[z^{X-Y}\,|(X>Y)\right] +\\ E\left[z^{Y-X}\,|(Y>X)\right] + E\left[z^{X-Y}\,|(X=Y)\right]
+\end{multline}
+\begin{multline}
+\implies  \mathcal{G}_W(z) = \sum\pr{X,Y\,| X>Y}z^{X-Y} + \\\sum\pr{X,Y\,| X<Y}z^{-(X-Y)} + \\\sum\pr{X,Y\,| X=Y} z^{X-Y}
+\end{multline}
+\begin{center}
+\begin{table}[h]
+    \centering
+    \resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|}
+\hline
+Case & Possibilities for $(X,Y)$  & $\pr{X,Y}$ \\
+\hline
+$X>Y$ & (1,0) & $\frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$ \\ 
+\hline
+$X<Y$ & (0,1) & $\frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$ \\ 
+\hline
+\multirow{2}{3em}{$X=Y$} & (0,0) & $\frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$ \\ \cline{2-3}
+& (1,1) & $\frac{1}{2}\times\frac{1}{2} = \frac{1}{4}$ \\ 
+\hline
+\end{tabular}
+}
+    \caption{\large Probability Table for $(X,Y)$ in different cases.}
+    \label{Table 1}
+\end{table}
+\end{center}
+$\therefore$From the table,
+\begin{multline}
+    \mathcal{G}_W(z) = [\pr{X,Y}z^{X-Y}]_{(X,Y)=(1,0)} +\\ [\pr{X,Y}z^{Y-X}]_{(X,Y)=(0,1)} +\\ [\pr{X,Y}z^{X-Y}]_{(X,Y)=(0,0)} +\\ [\pr{X,Y}z^{X-Y}]_{(X,Y)=(1,1)}
 \end{multline}
 \begin{align}
-    &= \frac{1}{4}z^1 + \frac{1}{4}z^1+\left(\frac{1}{4}z^0 + \frac{1}{4}z^0\right)
-\end{align}
-($\because$ Only possibility for $(X,Y)$ such that $X>Y$ is (1,0); Similarly for $Y>X$ and for $X=Y$, two possibilities, (0,0),(1,1))
-\begin{align}
-  &= \frac{1+z}{2}
+    &= \frac{1}{4}z^{(1-0)} + \frac{1}{4}z^{(1-0)}+\left(\frac{1}{4}z^{(0-0)} + \frac{1}{4}z^{(1-1)}\right)\\
+   &= \dfrac{z}{2} + \dfrac{1}{2}\\
+   &= \dfrac{1+z}{2}
 \end{align}
 \end{proof}
-\begin{definition}
-The pmf of $W$ with $\mathcal{G}_W(z) = \dfrac{1+z}{2}$ is
-\begin{equation}
+
+\begin{lemma}
+Expected value of $W$ with $\mathcal{G}_W(z) = \dfrac{1+z}{2}$ is $\frac{1}{2}$
+\end{lemma}
+\begin{proof}
+ As $\mathcal{G}_W(z) = \dfrac{1+z}{2}$, pmf of $W$ is 
+ \begin{equation}
    \pr{W=w} =
     \begin{cases}
       \frac{1}{2} & w \in \cbrak{0,1}\\
       0 & \text{otherwise}
     \end{cases}       
 \end{equation}
-\end{definition}
-
-
-Expected value of $W$
+So,
 \begin{align}
-   E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2}\\
-                    &= \frac{1}{2} 
+   E[W] &= 0\times\frac{1}{2} + 1\times\frac{1}{2} \\
+        &= \frac{1}{2}
 \end{align}
+\end{proof}
 
 \begin{lemma}
 Generating Function for $Z=X+Y$ is ($X \text{ and } Y$ being independent) $$\mathcal{G}_Z(z)=\mathcal{G}_X(z) \times \mathcal{G}_Y(z)$$ 
@@ -235,11 +265,18 @@ Generating Function for $Z=X+Y$ is ($X \text{ and } Y$ being independent) $$\mat
 \begin{align}
 \mathcal{G}_Z(z) &=\left(\frac{1 + z}{2}\right)^2\\
                    &= \frac{1+2z+z^2}{4}\\
-                   &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
 \end{align}
-\begin{definition}
-The pmf of $Z$ with $\mathcal{G}_Z(z)= \dfrac{1}{4} + \dfrac{1}{2}z + \dfrac{1}{4}z^2$ is
-\begin{align}
+\begin{lemma}
+Expected value of $Z$ with $\mathcal{G}_Z(z) = \dfrac{1+2z+z^2}{4}$ is 1 
+\end{lemma}
+\begin{proof}
+ As
+ \begin{align}
+     \mathcal{G}_Z(z) &= \frac{1+2z+z^2}{4}\\
+                      &= \frac{1}{4} + \frac{1}{2}z + \frac{1}{4}z^2
+ \end{align}
+ PMF of $Z$ is
+ \begin{align}
     \pr{Z = z} = 
 \begin{cases}
 \frac{1}{4} & z=0
@@ -248,72 +285,73 @@ The pmf of $Z$ with $\mathcal{G}_Z(z)= \dfrac{1}{4} + \dfrac{1}{2}z + \dfrac{1}{
 \frac{1}{4} & z=2
 \end{cases}\label{2}
 \end{align}
-\end{definition}
-
-Expected value of $Z$:
+$\therefore$ Expected value of $Z$ is
 \begin{align}
    E[Z] &= 0\times\frac{1}{4} + 1\times\frac{1}{2} + 2\times\frac{1}{4}\\
                      &= 1
 \end{align}
+\end{proof}
 
 Now, checking for each option,
 \begin{enumerate}
-    \item Checking if $X$ and $W$ are independent
+    \item Checking if $X$ and $W$ are independent:
 \begin{align}
     p_1 &= \pr{X=x,W=w}\\
         &= \pr{X=x,Y=x\pm w}\\
-        &=\pr{X=x}\times\pr{Y=x\pm w}\\
-        &= \frac{1}{2}\times\frac{1}{2}\\
-        &= \begin{cases}
-        \frac{1}{4} & (x\pm w) \in \{1, 2, 3, 4, 5, 6\}\\ ~\\[-1em]
-        0 & \text{otherwise}
-    \end{cases}
+        &=\pr{X=x}\times\pr{Y=x\pm w}
 \end{align}
-(only one value for $Y$ is obtained for each case when $x$ and $w$ are substituted)
+($\because\,X$ and $Y$ are independent)\\\\ 
+Note that here $Y \in \cbrak{0,1}$.\\
+So Possible values of $Y$ for different values of $x$ and $w$ are
+\begin{center}
+\begin{table}[h]
+    \centering
+    \resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|}
+\hline
+$x$ & $w$ & Possibilities for $Y$ & $\pr{Y}$ \\
+\hline
+0 & 0 & 0 & $\frac{1}{2}$\\ 
+\hline
+0 & 1 & 1 & $\frac{1}{2}$ \\ 
+\hline
+1 & 0 & 1 & $\frac{1}{2}$\\
+\hline
+1 & 1 & 0 & $\frac{1}{2}$\\
+\hline
+\end{tabular}
+}
+    \caption{\large Probability Table for $Y$ when different $x$ and $w$'s are substituted}
+    \label{Table 2}
+\end{table}
+\end{center}
+So, the value of $\pr{Y}\;\forall$ values of $x,\,w$ is equals to $\frac{1}{2}$\\ 
+$\implies\,\pr{X=x}\times\pr{Y=x\pm w}$ $\forall$ values of $x,w\in \cbrak{0,1}$ is equals to $\frac{1}{2}\times\frac{1}{2}$
 \begin{align}
-    \pr{X=x}\times\pr{W=w} &= \frac{1}{2} \times\frac{1}{2} \\
-                           &= \frac{1}{4}
+\implies p_1 &= \frac{1}{2}\times\frac{1}{2}\\
+             &= \frac{1}{4}
 \end{align}
+\begin{align}
+   \therefore \pr{X=x,W=w} = \frac{1}{4}\;\forall x,w\in \cbrak{0,1} \label{simul2}
+\end{align}
+Also,
+\begin{align}
+\nonumber\pr{X=x}\times\pr{W=w} &= \frac{1}{2} \times\frac{1}{2}\\
+                                &\;\forall x,w\in \cbrak{0,1}  \\ 
+                                &= \frac{1}{4} \label{simul3}
+\end{align}
+$\therefore$ From \eqref{simul2} and \eqref{simul3}.
 \begin{multline}
     \Pr{(X=x)}\Pr{(W=w)} =\\ \Pr{(X=x,W=w)}
 \end{multline}
 
 $\implies$ $X$ and $W$ are independent and hence Option 1 is true.
-\item Checking if $Y$ and $W$ are independent\\
-Solving of this case is identical to the first option except the variable $X$ is replaced by $Y$.
+\item Checking if $Y$ and $W$ are independent :\\
+Solving this case is identical to the first option except the variable $X$ is replaced by $Y$ (Note that here $W$ is symmetric wrt to $X$ and $Y$).\\
 Hence on solving, you get $Y$  and $W$ are independent.\\
-$\therefore$ Option 2 is also true.
-\item Checking if $W$ and $Z$ are uncorrelated\\
-\textbf{Uncorrelated random variables:} Two variables are said to be uncorrelated if the expected value of their joint distribution is equal to product of the expected values of their respective marginal distributions.\\
-Also, $WZ \in\cbrak{0,1,2}$
-\begin{align}
-    \pr{WZ =2} = \pr{W=1,Z=2} =0
-\end{align}
-($\because$ If $Z=2$, $X = Y =1 \implies W =0$ i.e., $\neq$ to 1)
-\begin{align}
-    \pr{WZ =0} = \frac{1}{2}
-\end{align}
-($\because\text{either }W=0\;\text{or}\;Z =0)$
-\begin{multline}
-    \pr{WZ=1} = 1 - \pr{WZ =0} - \\\pr{WZ =2}
-\end{multline}
-\begin{align}
-    &= 1 -\frac{1}{2}\\
-    &= \frac{1}{2}
-\end{align}
-$\therefore$ Expected value of $WZ$, $E[WZ]$
-\begin{align}
-    &= \sum_{k=0,1,2} k\pr{WZ =k}\\
-    &= 1 \times \frac{1}{2} +0\\
-    &= \frac{1}{2}
-\end{align}
-\begin{align}
-    \text{Also } E[W]\times E[Z] &= \frac{1}{2}\times1 = \frac{1}{2}\\
-                                 &= E[WZ]
-\end{align}
-Hence from the above equation $W$ and $Z$ are uncorrelated random variables.\\
-$\therefore$Option 3 is also true.
-\item Let's check for one particular case.
+$\therefore$ Option 2 is also true.\\
+4) Checking if $W$ and $Z$ are independent:\\
+Let's check for one particular case.
 \begin{align}
     \pr{W=0\,|\,Z=0} = 1
 \end{align}
@@ -321,13 +359,87 @@ $\therefore$Option 3 is also true.
 \begin{align}
     \therefore \frac{\pr{W=0,\,Z=0}}{\pr{Z=0}} &= 1
 \end{align}
-\begin{multline}
-   \implies\pr{W=0,Z=0} =\pr{Z=0} \\
-                       \neq\pr{W=0}\times\pr{Z=0}   
-\end{multline}
+\begin{align}
+ \implies\pr{W=0,Z=0} &=\pr{Z=0}\\ 
+                      &= \frac{1}{4}
+\end{align}
+\begin{align}
+\hspace{2cm}&\neq\pr{W=0}\times\pr{Z=0}   
+\end{align}
 $\therefore$ $W$ and $Z$ are not independent random variables\\
-Hence Option 4 is incorrect.\\
-$\therefore$ Answer is Option4.
+Hence option 4 is false.
+\item Checking if $W$ and $Z$ are uncorrelated:\\
+\textbf{Uncorrelated random variables:} Two variables are said to be uncorrelated if the expected value of their joint distribution is equal to product of the expected values of their respective marginal distributions.\\
+Let $U=WZ\;\implies U\in\cbrak{0,1,2}\,(\because W \in\cbrak{0,1} \text{ and } Z \in\cbrak{0,1,2})$
+\begin{lemma}
+PMF for the random variable $U$ is
+ \begin{align}
+    \pr{U = u} = 
+\begin{cases}
+\frac{1}{2} & u=0
+\\
+\frac{1}{2} & u=1\\
+0 & u=2
+\end{cases}
+\end{align}
+\end{lemma}
+\begin{proof}
+\begin{align}
+    \pr{U=2} &=\pr{WZ =2} \\
+             &= \pr{W=1,Z=2} =0
+\end{align}
+($\because$ If $Z=2$, $X = Y =1 \implies W =0$ i.e., $\neq$ to 1)
+$$\therefore\,\pr{U=2}=0$$
+\begin{align}
+   \pr{U=0} &=\pr{WZ =0}
+\end{align}
+So, either $W=0\;\text{or}\;Z =0$\\
+$\implies X=Y=0 \text{ or } X=Y=1$
+\begin{multline}
+       \pr{U=0} = \pr{X=0,Y=0} + \\ \pr{X=1,Y=1} 
+\end{multline}
+\begin{multline}
+\hspace{1cm}     = \pr{X=0}\pr{Y=0} +\\ \pr{X=1}\pr{Y=1}
+\end{multline}
+\begin{align}
+    &= \frac{1}{4} + \frac{1}{4}\\
+    &= \frac{1}{2}
+\end{align}
+$$\therefore\,\pr{U=0} = \frac{1}{2}$$
+Now,
+\begin{multline}
+    \pr{U=1}= 1 -\\\left[\pr{U =0} -\pr{U =2}\right]
+\end{multline}
+\begin{align}
+    &= 1 -\left[\frac{1}{2} + 0\right]\\
+    &= \frac{1}{2}
+\end{align}
+$$\therefore\,\pr{U=1} = \frac{1}{2}$$
+Hence PMF of $U$ is
+\begin{align}
+    \pr{U = u} = 
+\begin{cases}
+\frac{1}{2} & u=0
+\\
+\frac{1}{2} & u=1\\
+0 & u=2
+\end{cases}
+\end{align}
+\end{proof}
+Expected value of $WZ$, $E[WZ]$
+\begin{align}
+    &= \sum_{k=0,1,2} k\pr{WZ =k}\\
+    &= 1 \times \frac{1}{2} +0\\
+    &= \frac{1}{2} 
+\end{align}
+\begin{align}
+    \text{Also } E[W]\times E[Z] &= \frac{1}{2}\times1 = \frac{1}{2}\\
+                                 &= E[WZ] \label{simul4}
+\end{align}
+Hence from \eqref{simul4}\,$W$ and $Z$ are uncorrelated random variables.\\
+$\therefore$Option 3 is also true.\\
+
+$\therefore$ Incorrect Option is 4.
     
 \end{enumerate}
  
